@@ -22,6 +22,7 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>Port 2200</code></p>
 <p>In order for the changes to take affect, you need to restart the SSH daemon</p>
 <p><code>sudo service sshd restart</code></p>
+<p>You will temporarily be locked out of your server until you take the following step</p>
 <h3>Configure Lightsail (AWS) Firewall</h3>
 <p>Go the the dashboard for your Lightsail linux instance</p>
 <p>Click on the <code>Networking</code> tab</p>
@@ -31,6 +32,12 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Open the default port for NTP</p>
 <p><code>Custom | TCP | 123</code></p>
 <p>Click <code>Edit rules</code> and delete the rule for the default SSH port 22</p>
+<p>Now, you can connect to the Linux server via SSH from your own terminal at the new port (2200)</p>
+<p>Download the private key from the Lightsail (AWS) dashboard</p>
+<p>Place the file into the <code>/users/[user]/.ssh</code> directory</p>
+<p>Make sure to tighten the permissions on this file</p>
+<p><code>chmod 400 [private key]</code>
+<p><code>ssh ubuntu@[public ip] -p 2200 -i ~/.ssh/[private key]</code></p>
 <h3>Configure Uncomplicated Firewall</h3>
 <p>By default, block all incoming requests to all ports</p>
 <p><code>sudo ufw default deny incoming</code></p>
