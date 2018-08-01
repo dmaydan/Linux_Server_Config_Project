@@ -157,10 +157,10 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <pre>
 WSGIDaemonProcess flaskapp threads=5
 WSGIScriptAlias / /var/www/html/flaskapp/flaskapp.wsgi
-<Directory flaskapp>
+&lt;Directory flaskapp&gt;
     WSGIProcessGroup flaskapp
     WSGIApplicationGroup %{GLOBAL}
     Order deny,allow
     Allow from all
-</Directory>
+&lt;/Directory&gt;
 </pre>
