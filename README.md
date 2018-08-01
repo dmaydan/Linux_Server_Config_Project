@@ -152,7 +152,7 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
   from flaskapp import app as application
 </pre>
 <p>Now, we need to adjust the Apache2 server configuration</p>
-<p><code>sudo nano etc/apache2/sites-enabled/000-default.conf</code></p>
+<p><code>sudo nano /etc/apache2/sites-enabled/000-default.conf</code></p>
 <p>Paste in the following code just after the <code>DocumentRoot /var/www/html</code> line</p>
 <pre>
 WSGIDaemonProcess flaskapp threads=5
