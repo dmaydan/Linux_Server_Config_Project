@@ -5,3 +5,6 @@ This is my submission for Udacity's Full Stack Web Developer Nanodegree's Linux 
 <p>SSH Port: <code>2200</code></p>
 <p>URL: http://www.35.183.106.36.nip.io/</p>
 <i>NIP.IO is a wildcard DNS that allows you to map <code>[anything].[IP Address].nip.io</code> to the corresponding <code>[IP Address]</code></i>
+<p>Linux Distribution: <code>Ubuntu</code></p>
+Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
+<h2>Secure the Server</h2>
