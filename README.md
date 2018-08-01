@@ -139,3 +139,17 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Replace <code>engine = create_engine('[db_name]')</code> with <code>engine = create_engine('postgresql://catalog:password@localhost/catalog')</code></p>
 <p>Then, we run this file to fill in the database</p>
 <p><code>python3 filldatabase.py</code>
+<h3>Configure Apache and mod_wsgi</h3>
+<p>Create a <code>.wsgi</code> file to load the app</p>
+<p><code>sudo nano flaskapp.wsgi</code></p>
+<p>Paste in the following code</p>
+<p>
+  <code>
+  activate_this = '/home/ubuntu/environment/bin/activate_this.py'
+with open(activate_this) as file_:
+    exec(file_.read(), dict(__file__=activate_this))
+import sys
+sys.path.insert(0, '/var/www/html/flaskapp')
+from flaskapp import app as application
+  </code>
+</p>
