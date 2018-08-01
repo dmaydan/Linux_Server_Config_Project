@@ -30,8 +30,18 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>Custom | TCP | 2200</code></p>
 <p>Open the default port for NTP</p>
 <p><code>Custom | TCP | 123</code></p>
+<p>Click <code>Edit rules</code> and delete the rule for the default SSH port 22</p>
 <h3>Configure Uncomplicated Firewall</h3>
 <p>By default, block all incoming requests to all ports</p>
 <p><code>sudo ufw default deny incoming</code></p>
 <p>By default, allow all outgoing requests from all ports</p>
 <p><code>sudo ufw default allow outgoing</code></p>
+<p>Open port 2200 for SSH</p>
+<p><code>sudo ufw allow 2200/tcp</code></p>
+<p>Open port 80 for HTTP</p>
+<p><code>sudo ufw allow www</code></p>
+<p>Open port 123 for NTP</p>
+<p><code>sudo ufw allow ntp</code></p>
+<p>Enable the firewall</p>
+<p><code>sudo ufw enable</code></p>
+
