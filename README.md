@@ -8,8 +8,8 @@ This is my submission for Udacity's Full Stack Web Developer Nanodegree's Linux 
 <p>Linux Distribution: <code>Ubuntu</code></p>
 Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <h2>Secure the Server</h2>
-<p>Update all currently installed packages</p>
-
+<h3>Update all currently installed packages</h3>
+<p>Update the package source list</p>
 <p><code>sudo apt-get update</code></p>
-
+<p>Update the software</p>
 <p><code>sudo apt-get upgrade</code></p>
