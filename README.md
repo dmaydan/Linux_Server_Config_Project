@@ -78,11 +78,20 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Log back into the server as the <code>grader</code> user</p>
 <p>Create a directory called <code>.ssh</code> within that user's home directory</p>
 <p><code>mkdir .ssh</code></p>
-<p>Create a new file within that directory that will all the public keys that this user is allowed to user for authentication</p>
+<p>Create a new file within that directory that will contain all the public keys that this user is allowed to user for authentication</p>
 <p><code>touch .ssh/authorized_keys</code></p>
 <p>Open this file and paste in the public key</p>
 <p><code>sudo nano .ssh/authorized_keys</code></p>
 <p>Now, we need to tighten the permissions on the <code>authorized_keys</code> file and the <code>.ssh</code> directory</p>
 <p><code>chmod 700 .ssh</code></p>
 <p><code>chmod 644 .ssh/authorized_keys</code></p>
-
+<h3>Forcing Key-Based Authentication</h3>
+<p>Now that we have set up the key-pair for the <code>grader</code> user, we need to force key-based authentication for security purposes</p>
+<p>Open configuration file of the SSH daemon<p>
+<p><code>sudo nano /etc/ssh/sshd_config</code></p>
+<p>Locate the line</p>
+<p><code># PasswordAuthentication no</code></p>
+<p>Uncomment the file so it reads</p>
+<p><code>PasswordAuthentication no</code></p>
+<p>In order for the changes to take affect, you need to restart the SSH daemon</p>
+<p><code>sudo service sshd restart</code></p>
