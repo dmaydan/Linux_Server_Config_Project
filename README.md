@@ -16,9 +16,9 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <h3>Change SSH Port</h3>
 <p>Open configuration file of the SSH daemon<p>
 <p><code>sudo nano /etc/ssh/sshd_config</code></p>
-<p>Locate the line:</p>
+<p>Locate the line</p>
 <p><code># Port 22</code></p>
-<p>Replace that line with:</p>
+<p>Replace that line</p>
 <p><code>Port 2200</code></p>
 <p>In order for the changes to take affect, you need to restart the SSH daemon</p>
 <p><code>sudo service sshd restart</code></p>
@@ -26,7 +26,7 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Go the the dashboard for your Lightsail linux instance</p>
 <p>Click on the <code>Networking</code> tab</p>
 <p>Click the <code>Add another</code> button under the firewall table and enable 2 more ports:</p>
-<p>Open the new SSH port:</p>
+<p>Open the new SSH port</p>
 <p><code>Custom | TCP | 2200</code></p>
 <p>Open the default port for NTP</p>
 <p><code>Custom | TCP | 123</code></p>
