@@ -219,7 +219,7 @@ sys.path[:0] = new_sys_path
 <h3>Fix Google Oauth2 Login</h3>
 <p>Go to the console.developers.google.com, select your project, and navigate to APIs & Services > Credentials</p>
 <p>Now, edit your OAuth 2.0 client ID</p>
-<p>Add http://www.[public ip of your server].nip.io to <i>Authorized JavaScript origins</i> and <i>Authorized redirect URIs</i></p>
+<p>Add <code>http://www.[public ip of your server].nip.io</code> to <i>Authorized JavaScript origins</i> and <i>Authorized redirect URIs</i></p>
 <p>Download the new OAuth 2.0 client ID JSON file and copy its contents to your clipboard</p>
 <p>Back on your server, open the <code>client_secrets.json</code> file and paste in the new JSON</p>
 <p>Now, open the <code>flaskapp.py</code> file</p>
