@@ -95,3 +95,22 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>PasswordAuthentication no</code></p>
 <p>In order for the changes to take affect, you need to restart the SSH daemon</p>
 <p><code>sudo service sshd restart</code></p>
+<h2>Install and Configure PostgreSQL</h2>
+<p>Use the <code>apt-get</code> package installer to download PostgreSQL</p>
+<p><code>sudo apt-get install postgresql postgresql-contrib</code></p>
+<p>Now, we need to login into the database server</p>
+<p><code>sudo -u postgres psql</code></p>
+<p>Let's create a database user named <code>catalog</code></p>
+<p><code>CREATE USER catalog WITH PASSWORD 'password';</code></p>
+<p>Let's give the user permission to create databases</p>
+<p><code>ALTER USER catalog CREATEDB;</code></p>
+<p>Create a database named <code>catalog</code></p>
+<p><code>CREATE DATABASE catalog WITH OWNER catalog;</code></p>
+<p>Connect to the catalog database</p>
+<p><code>\connect catalog</code></p>
+<p>Revoke all rights</p>
+<p><code>REVOKE ALL ON SCHEMA public FROM public;</code></p>
+<p>Grant rights to <code>catalog</code> user</p>
+<p><code>GRANT ALL ON SCHEMA public TO catalog;</code></p>
+<p>Exit the database</p>
+<p><code>\q</code></p>
