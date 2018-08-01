@@ -208,7 +208,7 @@ import site
 site.addsitedir(site_packages)
 sys.real_prefix = sys.prefix
 sys.prefix = base
-# Move the added items to the front of the path:
+
 new_sys_path = []
 for item in list(sys.path):
     if item not in prev_sys_path:
@@ -225,3 +225,5 @@ sys.path[:0] = new_sys_path
 <p>Now, open the <code>flaskapp.py</code> file</p>
 <p><code>sudo nano flaskapp.py</code></p>
 <p>Find the two lines with <code>client_secrets.json</code> and replace that filename with the absolute path to the file <code>/var/www/html/flaskapp/client_secrets.json</code></p>
+<p>Finally, everything is ready, and all we have to do is restart the server</p>
+<p><code>sudo service apache2 restart</code></p>
