@@ -114,3 +114,28 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>GRANT ALL ON SCHEMA public TO catalog;</code></p>
 <p>Exit the database</p>
 <p><code>\q</code></p>
+<h2>Install and Configure Apache to Run Python mod_wsgi App</h2>
+<p>Install the Apache2 web server</p>
+<p><code>sudo apt-get install apache2</code></p>
+<p>Install the application handler - mod_wsgi</p>
+<p><code>sudo apt-get install libapache2-mod-wsgi-py3</code></p>
+<p>We will create a directory in our home directory to work in and link to it from the site-root defined by Apache's configuration</p>
+<p><code>mkdir ~/flaskapp</code></p>
+<p><code>sudo ln -sT ~/flaskapp /var/www/html/flaskapp</code></p>
+<p>Now, we bring in all the code from my github repo into this directory</p>
+<p><code>https://github.com/dmaydan/Item_Catalog_Project</code></p>
+<p>Now, rename the file <code>app.py</code> as <code>flaskapp.py</code></p>
+<p><code>mv app.py flaskapp.py</code></p>
+<h3>Fill PostgreSQL Database</h3>
+<p>Open the python3 shell</p>
+<p><code>python3</code></p>
+<p>Import the database model from <code>flaskapp.py</code></p>
+<p><code>from flaskapp import db</code></p>
+<p>Create the database model in the PostgreSQL database</p>
+<p><code>db.create_all()</code></p>
+<p>Open the <code>filldatabase.py</code> file in the <code>flaskapp</code> directory</p>
+<p><code>sudo nano filldatabase.py</code></p>
+<p>Replace <code>from app import Category, Item, User</code> with <code>from flaskapp import Category, Item, User</code></p>
+<p>Replace <code>engine = create_engine("""[db_name]""")</code> with <code>engine = create_engine("""postgresql://catalog:password@localhost/catalog""")</code></p>
+<p>Then, we run this file to fill in the database</p>
+<p><code>python3 filldatabase.py</code>
