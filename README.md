@@ -151,3 +151,16 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
   sys.path.insert(0, '/var/www/html/flaskapp')
   from flaskapp import app as application
 </pre>
+<p>Now, we need to adjust the Apache2 server configuration</p>
+<p><code>sudo nano etc/apache2/sites-enabled/000-default.conf</code></p>
+<p>Paste in the following code just after the <code>DocumentRoot /var/www/html</code> line</p>
+<pre>
+WSGIDaemonProcess flaskapp threads=5
+WSGIScriptAlias / /var/www/html/flaskapp/flaskapp.wsgi
+<Directory flaskapp>
+    WSGIProcessGroup flaskapp
+    WSGIApplicationGroup %{GLOBAL}
+    Order deny,allow
+    Allow from all
+</Directory>
+</pre>
