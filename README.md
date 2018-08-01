@@ -4,4 +4,4 @@ This is my submission for Udacity's Full Stack Web Developer Nanodegree's Linux 
 <p>IP Address: <code>35.183.106.36</code></p>
 <p>SSH Port: <code>2200</code></p>
 <p>URL: http://www.35.183.106.36.nip.io/</p>
-<i>NIP.IO is a wildcard DNS that allows you to map <code><anything>.<IP Address>.nip.io</code> to the corresponding <code><IP Address></code></i>
+<i>NIP.IO is a wildcard DNS that allows you to map <code>[anything].[IP Address].nip.io</code> to the corresponding <code>[IP Address]</code></i>
