@@ -228,6 +228,7 @@ sys.path[:0] = new_sys_path
 <p>Finally, everything is ready, and all we have to do is restart the server</p>
 <p><code>sudo service apache2 restart</code></p>
 <h2>References</h2>
+
 https://www.hostinger.com/tutorials/vps/how-to-change-ssh-port-vps
 
 https://medium.com/@jQN/deploy-a-flask-app-on-aws-ec2-1850ae4b0d41
