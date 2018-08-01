@@ -164,3 +164,64 @@ WSGIScriptAlias / /var/www/html/flaskapp/flaskapp.wsgi
     Allow from all
 &lt;/Directory&gt;
 </pre>
+<h3>Using a Virtual Environment to Install Packages</h3>
+<p>Create a virtual environment in pure python3</p>
+<p><code>python3 -m venv environment</code></p>
+<p>Now, we activate the virtual environment</p>
+<p><code>source environment/bin/activate</code></p>
+<p>Finally, we install the necessary packages</p>
+<pre>
+pip3 install flask
+pip3 install sqlalchemy
+pip3 install oauth2client
+pip3 install flask_sqlalchemy
+pip3 install flask_recaptcha
+</pre>
+<p>We have a slight problem because in order for mod_wsgi to activate the virtual environment and recognize these packages is for it run a python file called <code>activate_this.py</code>. However, when we create a virtual environment with native python, this file is not created. All we need to do is create a file called <code>activate_this.py</code> and paste in the necessary code</p>
+<p><code>sudo nano environment/bin/activate_this.py</code></p>
+<p>Paste in this code</p>
+<pre>
+"""By using execfile(this_file, dict(__file__=this_file)) you will
+activate this virtualenv environment.
+
+This can be used when you must use an existing Python interpreter, not
+the virtualenv bin/python
+"""
+
+try:
+    __file__
+except NameError:
+    raise AssertionError(
+        "You must run this like execfile('path/to/activate_this.py', dict(__file__='path/to/activate_this.py'))")
+import sys
+import os
+
+old_os_path = os.environ.get('PATH', '')
+os.environ['PATH'] = os.path.dirname(os.path.abspath(__file__)) + os.pathsep + old_os_path
+base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if sys.platform == 'win32':
+    site_packages = os.path.join(base, 'Lib', 'site-packages')
+else:
+    site_packages = os.path.join(base, 'lib', 'python%s' % sys.version[:3], 'site-packages')
+prev_sys_path = list(sys.path)
+import site
+site.addsitedir(site_packages)
+sys.real_prefix = sys.prefix
+sys.prefix = base
+# Move the added items to the front of the path:
+new_sys_path = []
+for item in list(sys.path):
+    if item not in prev_sys_path:
+        new_sys_path.append(item)
+        sys.path.remove(item)
+sys.path[:0] = new_sys_path
+</pre>
+<h3>Fix Google Oauth2 Login</h3>
+<p>Go to the console.developers.google.com, select your project, and navigate to APIs & Services > Credentials</p>
+<p>Now, edit your OAuth 2.0 client ID</p>
+<p>Add http://www.[public ip of your server].nip.io to <i>Authorized JavaScript origins</i> and <i>Authorized redirect URIs</i></p>
+<p>Download the new OAuth 2.0 client ID JSON file and copy its contents to your clipboard</p>
+<p>Back on your server, open the <code>client_secrets.json</code> file and paste in the new JSON</p>
+<p>Now, open the <code>flaskapp.py</code> file</p>
+<p><code>sudo nano flaskapp.py</code></p>
+<p>Find the two lines with <code>client_secrets.json</code> and replace that filename with the absolute path to the file <code>/var/www/html/flaskapp/client_secrets.json</code>
