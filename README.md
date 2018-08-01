@@ -13,3 +13,12 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>sudo apt-get update</code></p>
 <p>Update the software</p>
 <p><code>sudo apt-get upgrade</code></p>
+<h3>Change SSH Port</h3>
+<p>Open configuration file of the SSH daemon<p>
+<p><code>sudo nano /etc/ssh/sshd_config</code></p>
+<p>Locate the following line</p>
+<p><code># Port 22</code></p>
+<p>Replace that line with:</p>
+<p><code>Port 2200</code></p>
+<p>In order for the changes to take affect, you need to restart the SSH daemon</p>
+<p><code>service sshd restart</code></p>
