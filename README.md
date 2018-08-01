@@ -22,3 +22,16 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>Port 2200</code></p>
 <p>In order for the changes to take affect, you need to restart the SSH daemon</p>
 <p><code>sudo service sshd restart</code></p>
+<h3>Configure Lightsail (AWS) Firewall</h3>
+<p>Go the the dashboard for your Lightsail linux instance</p>
+<p>Click on the <code>Networking</code> tab</p>
+<p>Click the <code>Add another</code> button under the firewall table and enable 2 more ports:</p>
+<p>Open the new SSH port:</p>
+<p><code>Custom | TCP | 2200</code></p>
+<p>Open the default port for NTP</p>
+<p><code>Custom | TCP | 123</code></p>
+<h3>Configure Uncomplicated Firewall</h3>
+<p>By default, block all incoming requests to all ports</p>
+<p><code>sudo ufw default deny incoming</code></p>
+<p>By default, allow all outgoing requests from all ports</p>
+<p><code>sudo ufw default allow outgoing</code></p>
