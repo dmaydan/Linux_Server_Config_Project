@@ -136,6 +136,6 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Open the <code>filldatabase.py</code> file in the <code>flaskapp</code> directory</p>
 <p><code>sudo nano filldatabase.py</code></p>
 <p>Replace <code>from app import Category, Item, User</code> with <code>from flaskapp import Category, Item, User</code></p>
-<p>Replace <code>engine = create_engine("""[db_name]""")</code> with <code>engine = create_engine("""postgresql://catalog:password@localhost/catalog""")</code></p>
+<p>Replace <code>engine = create_engine('[db_name]')</code> with <code>engine = create_engine('postgresql://catalog:password@localhost/catalog')</code></p>
 <p>Then, we run this file to fill in the database</p>
 <p><code>python3 filldatabase.py</code>
