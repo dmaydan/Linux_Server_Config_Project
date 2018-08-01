@@ -224,4 +224,4 @@ sys.path[:0] = new_sys_path
 <p>Back on your server, open the <code>client_secrets.json</code> file and paste in the new JSON</p>
 <p>Now, open the <code>flaskapp.py</code> file</p>
 <p><code>sudo nano flaskapp.py</code></p>
-<p>Find the two lines with <code>client_secrets.json</code> and replace that filename with the absolute path to the file <code>/var/www/html/flaskapp/client_secrets.json</code>
+<p>Find the two lines with <code>client_secrets.json</code> and replace that filename with the absolute path to the file <code>/var/www/html/flaskapp/client_secrets.json</code></p>
