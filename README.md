@@ -36,7 +36,8 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Download the private key from the Lightsail (AWS) dashboard</p>
 <p>Place the file into the <code>/users/[user]/.ssh</code> directory</p>
 <p>Make sure to tighten the permissions on this file</p>
-<p><code>chmod 400 [private key]</code>
+<p><code>chmod 400 [private key]</code></p>
+<p>Login to the server</p>
 <p><code>ssh ubuntu@[public ip] -p 2200 -i ~/.ssh/[private key]</code></p>
 <h3>Configure Uncomplicated Firewall</h3>
 <p>By default, block all incoming requests to all ports</p>
@@ -51,4 +52,13 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>sudo ufw allow ntp</code></p>
 <p>Enable the firewall</p>
 <p><code>sudo ufw enable</code></p>
+<h3>Disable Root Login</h3>
+<p>Open configuration file of the SSH daemon<p>
+<p><code>sudo nano /etc/ssh/sshd_config</code></p>
+<p>Locate the line</p>
+<p><code>PermitRootLogin without-password</code></p>
+<p>Replace that line</p>
+<p><code>PermitRootLogin no</code></p>
+<p>In order for the changes to take affect, you need to restart the SSH daemon</p>
+<p><code>sudo service sshd restart</code></p>
 
