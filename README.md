@@ -145,9 +145,9 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p>Paste in the following code</p>
 <pre><code>
   activate_this = '/home/ubuntu/environment/bin/activate_this.py'
-with open(activate_this) as file_:
+  with open(activate_this) as file_:
     exec(file_.read(), dict(__file__=activate_this))
-import sys
-sys.path.insert(0, '/var/www/html/flaskapp')
-from flaskapp import app as application
+  import sys
+  sys.path.insert(0, '/var/www/html/flaskapp')
+  from flaskapp import app as application
 </code></pre>
