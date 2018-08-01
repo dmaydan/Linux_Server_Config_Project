@@ -61,4 +61,28 @@ Server Host: <code>Amazon Lightsail (Amazon Web Services)</code>
 <p><code>PermitRootLogin no</code></p>
 <p>In order for the changes to take affect, you need to restart the SSH daemon</p>
 <p><code>sudo service sshd restart</code></p>
+<h2>Creating New User</h2>
+<h3>Create and Give Sudo Access</h3>
+<p>Create the user</p>
+<p><code>sudo adduser grader</code></p>
+<p>Give sudo access</p>
+<p><code>sudo usermod -aG sudo grader</code></p>
+<h3>Set Up SSH for New User</h3>
+<p>Return to local machine and generate the key-pair</p>
+<p><code>ssh-keygen</code></p>
+<p>This command will prompt you for a path for the keypair</p>
+<p><code>/users/[local_user]/.ssh/[any_file_name]</code></p>
+<p>Read out the contents of the public key</p>
+<p><code>cat .ssh/[public key]</code></p>
+<p>Copy the result of this command to your clipboard</p>
+<p>Log back into the server as the <code>grader</code> user</p>
+<p>Create a directory called <code>.ssh</code> within that user's home directory</p>
+<p><code>mkdir .ssh</code></p>
+<p>Create a new file within that directory that will all the public keys that this user is allowed to user for authentication</p>
+<p><code>touch .ssh/authorized_keys</code></p>
+<p>Open this file and paste in the public key</p>
+<p><code>sudo nano .ssh/authorized_keys</code></p>
+<p>Now, we need to tighten the permissions on the <code>authorized_keys</code> file and the <code>.ssh</code> directory</p>
+<p><code>chmod 700 .ssh</code></p>
+<p><code>chmod 644 .ssh/authorized_keys</code></p>
 
